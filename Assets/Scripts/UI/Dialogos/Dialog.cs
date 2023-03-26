@@ -1,18 +1,16 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Dialog : MonoBehaviour
+[Serializable]
+public class Dialog
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [TextArea(3,10)]
+    [SerializeField] private string[] sentences;
+    [SerializeField] private string name;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public string[] Sentences { get { return sentences; } }
+
+    public string Name { get { return name; } }
 }
