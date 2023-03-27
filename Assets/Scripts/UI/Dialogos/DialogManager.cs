@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour
 {
     [SerializeField] private Queue<string> sentences;
-
-    [SerializeField] private TextMeshProUGUI nameText;
-    [SerializeField] private TextMeshProUGUI dialogText;
+    [SerializeField] private Text nameText;
+    [SerializeField] private Text dialogText;
     [SerializeField] private Animator animator;
     [SerializeField] private float wordsPerSeconds;
- 
+
+    public bool isFinish = false;
+    public bool isTyping = false;
+
     private void Start()
     {
         sentences = new Queue<string>();
@@ -28,26 +30,27 @@ public class DialogManager : MonoBehaviour
         {
             sentences.Enqueue(sentence);
         }
-        DisplayNextSentence();
+        StartCoroutine(DisplayNextSentence());
     }
 
-    public void DisplayNextSentence()
+    public IEnumerator DisplayNextSentence()
     {
         if (sentences.Count == 0) {
+            isFinish = true;
             EndDialog();
-            return;
+            yield break;
         }
         string sentence = sentences.Dequeue();
-        StartCoroutine(TypeSentence(sentence));
+        yield return TypeSentence(sentence);
     }
     public void EndDialog()
     {
         animator.SetBool("isOpen", false);
-        Debug.Log("Fin de la conversacion");
     }
 
     public IEnumerator TypeSentence(string sentence)
     {
+        isTyping = true;
         dialogText.text = "";
         foreach (char caracter in sentence)
         {
@@ -55,5 +58,6 @@ public class DialogManager : MonoBehaviour
             yield return new WaitForSeconds( 1 / wordsPerSeconds);
         }
         yield return new WaitForSeconds(1.0f);
+        isTyping = false;
     }
 }
