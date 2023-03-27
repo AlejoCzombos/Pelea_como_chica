@@ -1,3 +1,4 @@
+using ControlPlayer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,9 +9,10 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
 
     private bool pauseMenuIsActive = false;
+    public bool canPause;
     private void Update()
     {
-        if (Input.GetButtonDown("Pause"))
+        if (Input.GetButtonDown("Pause") && canPause)
         {
             pauseMenuIsActive = !pauseMenuIsActive;
             pauseMenu.SetActive(pauseMenuIsActive);

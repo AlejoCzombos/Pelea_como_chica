@@ -2,38 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class anima2 : MonoBehaviour
+public class PlayerAttack : MonoBehaviour
 {
+    [SerializeField] private float x = 0;
+    [SerializeField] private bool contador = false;
+    [SerializeField] private int damage;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private Animator animator;
 
-    public float x;
-    public bool contador;
-    private Animator animator;
-    public int damage;
+    private bool canAttack = true;
+    public bool CanAttack
+    {
+        get { return canAttack; }
+        set { canAttack = value; }
+    }
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
-
-    // Start is called before the first frame update
     void Start()
     {
-        x = 0;
-        damage = 40;
-        contador = false;
         animator = gameObject.GetComponent<Animator>();
-        animator.SetInteger("combo", -1); 
-
+        animator.SetInteger("combo", -1);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (!canAttack) return;
 
-        if (contador) {
+        if (contador)
+        {
             x = x + 1 * Time.deltaTime;
         }
 
-        if (x >= 2) {
+        if (x >= 2)
+        {
             contador = false;
             animator.SetBool("noAttack", true);
             animator.SetInteger("combo", -1);
@@ -41,7 +44,8 @@ public class anima2 : MonoBehaviour
         }
 
 
-        if (Input.GetKeyDown(KeyCode.G) && animator.GetInteger("combo") == -1) {
+        if (Input.GetButtonDown("Attack") && animator.GetInteger("combo") == -1)
+        {
 
             Attack();
             contador = true;
@@ -52,7 +56,7 @@ public class anima2 : MonoBehaviour
 
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && x > 0.15f && animator.GetInteger("combo") == 0)
+        if (Input.GetButtonDown("Attack") && x > 0.15f && animator.GetInteger("combo") == 0)
         {
             Attack();
             contador = true;
@@ -61,7 +65,7 @@ public class anima2 : MonoBehaviour
             x = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && x > 0.15f && animator.GetInteger("combo") == 1)
+        if (Input.GetButtonDown("Attack") && x > 0.15f && animator.GetInteger("combo") == 1)
         {
             Attack();
             contador = true;
@@ -70,7 +74,7 @@ public class anima2 : MonoBehaviour
             x = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.G) && x > 0.15f && animator.GetInteger("combo") == 2)
+        if (Input.GetButtonDown("Attack") && x > 0.15f && animator.GetInteger("combo") == 2)
         {
             Attack();
             contador = true;
@@ -78,26 +82,24 @@ public class anima2 : MonoBehaviour
             animator.SetInteger("combo", 0);
             x = 0;
         }
-
     }
 
-    void Attack() {
+    void Attack()
+    {
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
-        foreach (Collider2D enemy in hitEnemies) {
-            if (enemy.GetComponent<Enemy_mov>().currentHealth > 0) {
-                enemy.GetComponent<Enemy_mov>().TakeDamage(damage);
-            }
-           
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(damage);
         }
     }
 
-    void OnDrawGizmosSelected() {
-
-        if (attackPoint == null) {
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
             return;
         }
-
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
