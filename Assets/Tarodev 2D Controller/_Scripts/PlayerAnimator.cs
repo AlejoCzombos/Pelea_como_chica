@@ -27,6 +27,8 @@ namespace ControlPlayer{
         void Awake() => _player = GetComponentInParent<IPlayerController>();
 
         void Update() {
+
+
             if (_player == null) return;
 
             // Flip the sprite
