@@ -10,7 +10,7 @@ public class HUDManager : MonoBehaviour
     private bool pauseMenuIsActive = false;
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetButtonDown("Pause"))
         {
             pauseMenuIsActive = !pauseMenuIsActive;
             pauseMenu.SetActive(pauseMenuIsActive);
