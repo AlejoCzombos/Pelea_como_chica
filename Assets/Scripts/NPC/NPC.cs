@@ -28,9 +28,9 @@ public class NPC : MonoBehaviour
             {
                 if (!inDialogue)
                 {
+                    playerAttack.CanAttack = false;
                     inDialogue = true;
                     playerController.Active = false;
-                    playerAttack.CanAttack = false;
                     hudManager.canPause = false;
                     dialogManager.StartDialog(dialogTrigger.Dialog);
                 }
