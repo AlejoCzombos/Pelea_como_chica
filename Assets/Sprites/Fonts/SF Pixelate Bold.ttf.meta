@@ -8,8 +8,10 @@ TrueTypeFontImporter:
   characterSpacing: 0
   characterPadding: 1
   includeFontData: 1
-  fontNames: []
-  fallbackFontReferences: []
+  fontNames:
+  - SF Pixelate
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 303b7d66d8e345044a6060769b09a449, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

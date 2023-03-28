@@ -2,7 +2,6 @@ using ControlPlayer;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class HUDManager : MonoBehaviour
 {
@@ -14,15 +13,8 @@ public class HUDManager : MonoBehaviour
     {
         if (Input.GetButtonDown("Pause") && canPause)
         {
-            pauseMenuIsActive = !pauseMenuIsActive;
-            pauseMenu.SetActive(pauseMenuIsActive);
-            Time.timeScale = !pauseMenuIsActive ? 1.0f : 0.0f;
+            ResumeGame();
         }
-    }
-
-    public void ChangeSceneToMainMenu()
-    {
-        SceneManager.LoadScene("MainMenuScene");
     }
 
     public void ResumeGame()

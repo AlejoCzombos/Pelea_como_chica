@@ -9,6 +9,7 @@ using UnityEditor;
 public class ScenesManager : MonoBehaviour
 {
     [SerializeField] private bool areTheCredits;
+    [SerializeField] private LevelLoader levelLoader;
 
     private void Update()
     {
@@ -23,11 +24,15 @@ public class ScenesManager : MonoBehaviour
     public void ChangeSceneToGame()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("GameScene");
+        StartCoroutine(levelLoader.LoadScene(0));
     }
     public void ChangeSceneToCredits()
     {
-        SceneManager.LoadScene("CreditsScene");
+        StartCoroutine(levelLoader.LoadScene(2));
+    } 
+    public void ChangeSceneToOptions()
+    {
+        StartCoroutine(levelLoader.LoadScene(4));
     }
     public void ExitGame()
     {
@@ -36,6 +41,8 @@ public class ScenesManager : MonoBehaviour
     }
     public void ChangeSceneToMainMenu()
     {
-        SceneManager.LoadScene("MainMenuScene");
+        StartCoroutine(levelLoader.LoadScene(1));
     }
+
+    
 }
