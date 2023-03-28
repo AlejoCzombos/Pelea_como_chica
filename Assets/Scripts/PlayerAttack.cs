@@ -104,3 +104,5 @@ public class PlayerAttack : MonoBehaviour
     }
 
 }
+
+//(Input.GetButtonDown("Attack")
