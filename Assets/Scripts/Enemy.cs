@@ -12,9 +12,16 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private Animator animator;
+    [SerializeField] private float x = 0;
+    [SerializeField] private bool contador = false;
+
+
     [SerializeField] private GameObject player;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int currentHealth;
+    [SerializeField] private float horizontalPush;
+    [SerializeField] private float verticalPush;
 
 
     private EnemyState enemyState = EnemyState.Idle;
@@ -28,16 +35,31 @@ public class Enemy : MonoBehaviour
     }
     void Start()
     {
+        contador = false;
+        animator = gameObject.GetComponent<Animator>();
         canMove = true;
         currentHealth = maxHealth;
     }
     void Update()
     {
+        if (contador)
+        {
+            x = x + 1 * Time.deltaTime;
+        }
+
+        if (x >= 1.5f)
+        {
+            contador = false;
+            animator.SetBool("GetDamage", false);
+            x = 0;
+        }
+
         //gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250f * Time.deltaTime, 0));
     }
 
     public void TakeDamage(int damage)
     {
+        animacionDanio();
         currentHealth -= damage;
         Debug.Log(currentHealth);
         if (currentHealth <= 0)
@@ -85,6 +107,14 @@ public class Enemy : MonoBehaviour
                 Debug.LogError("Error de Estado");
                 break;
         }
+    }
+
+    public void animacionDanio() {
+        animator.SetBool("GetDamage", true);
+        contador = true;
+        Debug.Log("Pushed");
+        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
+
     }
 
 }
