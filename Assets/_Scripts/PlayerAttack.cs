@@ -37,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canAttack) return;
         if (transformar.lossyScale == new Vector3(-1, 1, 1))
         {
             damage = -20;
@@ -47,7 +48,6 @@ public class PlayerAttack : MonoBehaviour
             damage = 20;
         }
 
-        if (!canAttack) return;
 
         if (contador)
         {
@@ -116,7 +116,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Attack()
     {
-       
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);     
             foreach (Collider2D enemy in hitEnemies)
             {

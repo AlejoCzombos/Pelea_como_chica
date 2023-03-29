@@ -12,7 +12,6 @@ public enum EnemyState
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private Animator animator;
     [SerializeField] private float x = 0;
     [SerializeField] private bool contador = false;
 
@@ -28,19 +27,22 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float verticalPush;
 
 
+    private Animator animator;
     private EnemyState enemyState = EnemyState.Idle;
     private BoxCollider2D boxCollider;
+    private Rigidbody2D rb;
 
     private bool canMove = false;
 
     private void Awake()
     {
         boxCollider = gameObject.GetComponent<BoxCollider2D>();
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        animator = gameObject.GetComponent<Animator>();
     }
     void Start()
     {
         contador = false;
-        animator = gameObject.GetComponent<Animator>();
         canMove = true;
         currentHealth = maxHealth;
     }
@@ -124,7 +126,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("GetDamage", true);
         contador = true;
         Debug.Log("Pushed");
-        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
+        rb.AddForce(new Vector3(horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
 
     }
     public void animacionDanioDer()
@@ -132,7 +134,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("GetDamage", true);
         contador = true;
         Debug.Log("Pushed");
-        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(-horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
+        rb.AddForce(new Vector3(-horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
 
     }
 

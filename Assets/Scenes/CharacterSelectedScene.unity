@@ -230,6 +230,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 424626514}
   scenesManager: {fileID: 1749211379}
+  pascualaImage: {fileID: 93978115}
+  pascualaNameImagen: {fileID: 1233508165}
+  macachaImage: {fileID: 1648671474}
+  machucaNameImagen: {fileID: 473922308}
   BigImage: {fileID: 1858608525}
   smallImage: {fileID: 1318858964}
 --- !u!4 &261381828
@@ -1422,7 +1426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

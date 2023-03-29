@@ -24,7 +24,7 @@ public class NPC : MonoBehaviour
     {
         if (isTrigger)
         {
-            if (Input.GetButtonDown("Submit"))
+            if (Input.GetButtonDown("Attack"))
             {
                 if (!inDialogue)
                 {

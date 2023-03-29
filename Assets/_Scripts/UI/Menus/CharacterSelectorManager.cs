@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class CharacterSelectorManager : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     [SerializeField] private ScenesManager scenesManager;
+    [SerializeField] private Image pascualaImage;
+    [SerializeField] private Image pascualaNameImagen;
+    [SerializeField] private Image macachaImage;
+    [SerializeField] private Image machucaNameImagen;
     [SerializeField] private Image BigImage;
     [SerializeField] private Image smallImage;
 
     private float timeSinceLastClick;
     private float timeSinceClicks = 0.3f;
     private int currentSelectedCharacter;
-
-    private void Start()
-    {
-        animator.SetInteger("SelCharacter", 1);
-    }
 
     private void Update()
     {
@@ -39,21 +39,27 @@ public class CharacterSelectorManager : MonoBehaviour
         animator.SetInteger("SelCharacter", currentSelectedCharacter);
         if (Input.GetAxisRaw("Submit") != 0)
         {
-            if (currentSelectedCharacter == 1)
+            timeSinceLastClick = 0.0f;
+            switch (currentSelectedCharacter)
             {
-                scenesManager.ChangeSceneToGame();
+                case 0:
+                    StartCoroutine(Shake(pascualaImage, pascualaNameImagen));
+                    break;
+                case 1:
+                    scenesManager.ChangeSceneToGame();
+                    break;
+                case 2:
+                    StartCoroutine(Shake(macachaImage, machucaNameImagen));
+                    break;
+                default:
+                    break;
             }
         }
-        /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("CharacterSelector_Juana") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
-        {
-            smallImage.color = new Color(1, 1, 1, 0);
-            BigImage.color = new Color(1, 1, 1, 1);
-            Debug.Log("if");
-        }
-        if(animator.GetInteger("SelCharacter") != 1) { 
-            Debug.Log("else");
-            smallImage.color = new Color(1, 1, 1, 1);
-        }*/
+    }
+    IEnumerator Shake(Image image, Image nameImage)
+    {
+        yield return image.rectTransform.transform.DOPunchRotation(new Vector3(0,0,5.0f), 0.1f);
+        yield return nameImage.rectTransform.transform.DOPunchRotation(new Vector3(0,0,3.0f), 0.1f);
     }
     IEnumerator Wait(float seconds)
     {
