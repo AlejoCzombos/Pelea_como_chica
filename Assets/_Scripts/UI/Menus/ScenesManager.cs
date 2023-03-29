@@ -43,6 +43,8 @@ public class ScenesManager : MonoBehaviour
     {
         StartCoroutine(levelLoader.LoadScene(1));
     }
-
-    
+    public void ChangeSceneToCharacterController()
+    {
+        StartCoroutine(levelLoader.LoadScene(3));
+    }
 }

@@ -44,10 +44,19 @@ public class CharacterSelectorManager : MonoBehaviour
                 scenesManager.ChangeSceneToGame();
             }
         }
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("CharacterSelector_Juana") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        /*if (animator.GetCurrentAnimatorStateInfo(0).IsName("CharacterSelector_Juana") && animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
         {
             smallImage.color = new Color(1, 1, 1, 0);
             BigImage.color = new Color(1, 1, 1, 1);
+            Debug.Log("if");
         }
+        if(animator.GetInteger("SelCharacter") != 1) { 
+            Debug.Log("else");
+            smallImage.color = new Color(1, 1, 1, 1);
+        }*/
+    }
+    IEnumerator Wait(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
     }
 }

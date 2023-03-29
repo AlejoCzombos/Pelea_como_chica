@@ -1180,8 +1180,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1616781167}
-        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: ChangeSceneToGame
+        m_TargetAssemblyTypeName: ScenesManager, Assembly-CSharp
+        m_MethodName: ChangeSceneToCharacterController
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
