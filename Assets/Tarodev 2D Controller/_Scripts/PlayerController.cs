@@ -47,8 +47,9 @@ namespace ControlPlayer
             CalculateJumpApex(); // Affects fall speed, so calculate before gravity
             CalculateGravity(); // Vertical movement
             CalculateJump(); // Possibly overrides vertical
-
+            
             MoveCharacter(); // Actually perform the axis movement
+
         }
 
 
@@ -58,7 +59,8 @@ namespace ControlPlayer
             Input = new FrameInput {
                 JumpDown = UnityEngine.Input.GetButtonDown("Jump"),
                 JumpUp = UnityEngine.Input.GetButtonUp("Jump"),
-                X = UnityEngine.Input.GetAxisRaw("Horizontal")
+                X = UnityEngine.Input.GetAxisRaw("Horizontal"),
+                Z = UnityEngine.Input.GetKeyDown(KeyCode.G)
             };
             if (Input.JumpDown) {
                 _lastJumpPressed = Time.time;
@@ -303,5 +305,11 @@ namespace ControlPlayer
         }
 
         #endregion
+
+        public void recibirGolpe() {
+            _currentVerticalSpeed = 15;
+            _currentHorizontalSpeed = -10;
+        }
+
     }
 }

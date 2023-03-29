@@ -16,6 +16,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float x = 0;
     [SerializeField] private bool contador = false;
 
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private LayerMask playerLayer;
+
 
     [SerializeField] private GameObject player;
     [SerializeField] private int maxHealth = 100;
@@ -54,13 +58,26 @@ public class Enemy : MonoBehaviour
             x = 0;
         }
 
+        if (Input.GetKeyDown(KeyCode.P)) {
+            attack();
+            Debug.Log("Atacando");
+        }
+
         //gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector2(-250f * Time.deltaTime, 0));
     }
 
     public void TakeDamage(int damage)
     {
-        animacionDanio();
-        currentHealth -= damage;
+        if (damage > 0)
+        {
+            animacionDanioIzq();
+            currentHealth -= damage;
+        }
+        else {
+            animacionDanioDer();
+            currentHealth += damage;
+        }   
+        
         Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
@@ -68,12 +85,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void die()
-    {
-        Debug.Log("Me mori");
-        //GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
-    }
 
     public void ChangeStateEnemy(EnemyState state)
     {
@@ -109,12 +120,42 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void animacionDanio() {
+    public void animacionDanioIzq() {
         animator.SetBool("GetDamage", true);
         contador = true;
         Debug.Log("Pushed");
         gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
 
     }
+    public void animacionDanioDer()
+    {
+        animator.SetBool("GetDamage", true);
+        contador = true;
+        Debug.Log("Pushed");
+        gameObject.GetComponent<Rigidbody2D>().AddForce(new Vector3(-horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
+
+    }
+
+    void attack()
+    {
+        Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
+
+        foreach (Collider2D player in hitPlayer) {
+            player.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<PlayerAttack>().TakeDamage(1);
+            
+
+        }
+    }
+
+    void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+
 
 }
