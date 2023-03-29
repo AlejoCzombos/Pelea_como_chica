@@ -9,6 +9,7 @@ namespace ControlPlayer
         public float X,Y;
         public bool JumpDown;
         public bool JumpUp;
+        internal bool Z;
     }
 
     public interface IPlayerController {

@@ -6,7 +6,13 @@ public class PlayerAttack : MonoBehaviour
 {
     [SerializeField] private float x = 0;
     [SerializeField] private bool contador = false;
+
+    [SerializeField] private Transform transformar;
     [SerializeField] private int damage;
+
+    [SerializeField] private int maxHealth = 3;
+    public int currentHealth;
+
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
@@ -21,6 +27,9 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
+
+        currentHealth = maxHealth;
+        transformar = gameObject.GetComponentInParent<Transform>();
         animator = gameObject.GetComponent<Animator>();
         animator.SetInteger("combo", -1);
     }
@@ -28,6 +37,16 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (transformar.lossyScale == new Vector3(-1, 1, 1))
+        {
+            damage = -20;
+        }
+
+        if (transformar.lossyScale == new Vector3(1, 1, 1))
+        {
+            damage = 20;
+        }
+
         if (!canAttack) return;
 
         if (contador)
@@ -46,7 +65,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Attack") && animator.GetInteger("combo") == -1)
         {
-
             Attack();
             contador = true;
             animator.SetTrigger("Attack");
@@ -84,14 +102,26 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damage)
+    {
+        gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpe();
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
+
+        if (currentHealth <= 0) {
+            Debug.Log("Me mori xD");
+        }
+
+    }
+
     void Attack()
     {
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
-        {
-            enemy.GetComponent<Enemy>().TakeDamage(damage);
-        }
+       
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);     
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.GetComponent<Enemy>().TakeDamage(damage);
+            }        
     }
 
     void OnDrawGizmosSelected()
@@ -103,6 +133,7 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
+    
 }
 
 //(Input.GetButtonDown("Attack")
