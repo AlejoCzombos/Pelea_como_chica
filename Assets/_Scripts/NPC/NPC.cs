@@ -12,12 +12,14 @@ public class NPC : MonoBehaviour
     [SerializeField] private HUDManager hudManager;
 
     private DialogTrigger dialogTrigger;
+    private AudioSource voice;
     private bool isTrigger = false;
     private bool inDialogue = false;
 
     private void Awake()
     {
         dialogTrigger = gameObject.GetComponent<DialogTrigger>();
+        voice = gameObject.GetComponentInChildren<AudioSource>();
     }
 
     private void Update()
@@ -28,11 +30,10 @@ public class NPC : MonoBehaviour
             {
                 if (!inDialogue)
                 {
-                    playerAttack.CanAttack = false;
                     inDialogue = true;
                     playerController.Active = false;
                     hudManager.canPause = false;
-                    dialogManager.StartDialog(dialogTrigger.Dialog);
+                    dialogManager.StartDialog(dialogTrigger.Dialog, voice);
                 }
                 else if (!dialogManager.isFinish && !dialogManager.isTyping)
                 {
@@ -43,11 +44,13 @@ public class NPC : MonoBehaviour
                         dialogManager.isFinish = false;
                         hudManager.canPause = true;
                         playerController.Active = true;
-                        playerAttack.CanAttack = true;
                         inDialogue = false;
                     }
                 }
             }
+        }
+        else
+        {
         }
     }
 
@@ -55,10 +58,12 @@ public class NPC : MonoBehaviour
     {
         isTrigger = true;
         animator.SetBool("isOpen", true);
+        playerAttack.CanAttack = false;
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
         isTrigger = false;
         animator.SetBool("isOpen", false);
+        playerAttack.CanAttack = true;
     }
 }

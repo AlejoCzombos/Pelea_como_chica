@@ -15,13 +15,16 @@ public class DialogManager : MonoBehaviour
     public bool isFinish = false;
     public bool isTyping = false;
 
+    private AudioSource voice;
+
     private void Start()
     {
         sentences = new Queue<string>();
     }
 
-    public void StartDialog(Dialog dialog)
-    {
+    public void StartDialog(Dialog dialog, AudioSource voiceAudio)
+    { 
+        voice = voiceAudio;
         animator.SetBool("isOpen", true);
         nameText.text = dialog.Name;
         sentences.Clear();
@@ -55,6 +58,7 @@ public class DialogManager : MonoBehaviour
         foreach (char caracter in sentence)
         {
             dialogText.text += caracter;
+            voice.Play();
             yield return new WaitForSeconds( 1 / wordsPerSeconds);
         }
         yield return new WaitForSeconds(1.0f);

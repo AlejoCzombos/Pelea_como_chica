@@ -11,12 +11,27 @@ public class ScenesManager : MonoBehaviour
     [SerializeField] private bool areTheCredits;
     [SerializeField] private LevelLoader levelLoader;
 
+    private AudioSource buttonPressed;
+
+    private float timeSinceLastClick;
+    private float timeSinceClicks = 1.0f;
+    private void Awake()
+    {
+        buttonPressed= GetComponent<AudioSource>();
+    }
     private void Update()
     {
+        timeSinceLastClick += Time.deltaTime;
+        if (timeSinceLastClick < timeSinceClicks)
+        {
+            return;
+        }
         if (areTheCredits)
         {
+            timeSinceLastClick = 0;
             if (Input.GetAxisRaw("Cancel") != 0)
             {
+                PlayButtonPressed();
                 ChangeSceneToMainMenu();
             }
         }
@@ -28,22 +43,31 @@ public class ScenesManager : MonoBehaviour
     }
     public void ChangeSceneToCredits()
     {
+        PlayButtonPressed();
         StartCoroutine(levelLoader.LoadScene(2));
     } 
     public void ChangeSceneToOptions()
     {
+        PlayButtonPressed();
         StartCoroutine(levelLoader.LoadScene(4));
     }
     public void ExitGame()
     {
+        PlayButtonPressed();
         Application.Quit();
     }
     public void ChangeSceneToMainMenu()
     {
+        PlayButtonPressed();
         StartCoroutine(levelLoader.LoadScene(1));
     }
     public void ChangeSceneToCharacterController()
     {
+        PlayButtonPressed();
         StartCoroutine(levelLoader.LoadScene(3));
+    }
+    public void PlayButtonPressed()
+    {
+        buttonPressed.Play();
     }
 }

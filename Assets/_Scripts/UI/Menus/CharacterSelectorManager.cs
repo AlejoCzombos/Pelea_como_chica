@@ -18,7 +18,11 @@ public class CharacterSelectorManager : MonoBehaviour
     private float timeSinceLastClick;
     private float timeSinceClicks = 0.3f;
     private int currentSelectedCharacter;
-
+    private AudioSource audioChangeCharacter;
+    private void Awake()
+    {
+        audioChangeCharacter = GetComponent<AudioSource>();
+    }
     private void Update()
     {
         timeSinceLastClick += Time.deltaTime;
@@ -28,10 +32,12 @@ public class CharacterSelectorManager : MonoBehaviour
         }
         if (Input.GetAxisRaw("Horizontal") > 0)
         {
+            audioChangeCharacter.Play();
             timeSinceLastClick = 0.0f;
             currentSelectedCharacter = currentSelectedCharacter + 1;
         }else if (Input.GetAxisRaw("Horizontal") < 0)
         {
+            audioChangeCharacter.Play();
             timeSinceLastClick = 0.0f;
             currentSelectedCharacter = currentSelectedCharacter - 1;
         }
@@ -47,6 +53,7 @@ public class CharacterSelectorManager : MonoBehaviour
                     break;
                 case 1:
                     scenesManager.ChangeSceneToGame();
+                    scenesManager.PlayButtonPressed();
                     break;
                 case 2:
                     StartCoroutine(Shake(macachaImage, machucaNameImagen));
