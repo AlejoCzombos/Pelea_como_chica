@@ -37,28 +37,4 @@ public class ScrollableImage : MonoBehaviour
             renderers[i].material.SetTextureOffset("_MainTex", newOffset);
         }
     }
-
-
-
-
-
-
-    /*[SerializeField] private Rigidbody2D rigidbody2D;
-    [SerializeField] private Vector2 speedMovement;
-    private Material material;
-    private Vector2 offset;
-    private Transform camera;
-
-    private void Awake()
-    {
-        material = GetComponent<SpriteRenderer>().material;
-        camera = Camera.main.transform;
-        offset = material.mainTextureOffset;
-    }
-
-    private void Update()
-    {
-        offset = (rigidbody2D.velocity.x * 0.1f) * speedMovement * Time.deltaTime;
-        material.mainTextureOffset += offset;
-    }*/
 }
