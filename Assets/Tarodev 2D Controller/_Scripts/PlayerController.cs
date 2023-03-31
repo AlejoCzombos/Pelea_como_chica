@@ -306,9 +306,15 @@ namespace ControlPlayer
 
         #endregion
 
-        public void recibirGolpe() {
+        public void recibirGolpeDer() {
             _currentVerticalSpeed = 15;
-            _currentHorizontalSpeed = -10;
+            _currentHorizontalSpeed = +10;
+        }
+
+        public void recibirGolpeIzq()
+        {
+            _currentVerticalSpeed = 15;
+            _currentHorizontalSpeed = -20;
         }
 
     }

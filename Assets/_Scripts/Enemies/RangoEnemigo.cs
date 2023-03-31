@@ -6,15 +6,20 @@ public class RangoEnemigo : MonoBehaviour
 {
 
     [SerializeField] private Animator animator;
-    [SerializeField] private Enemy enemigo;
+    public Enemigo2D enemigo;
+    public GameObject target;
 
     void OnTriggerEnter2D(Collider2D coll) {
         if (coll.CompareTag("Player")) {
-            //animator.SetBool("walk", false);
-            //animator.SetBool("run", false);
-            //animator.SetBool("attack", true);
+            animator.SetBool("walk", false);
+            animator.SetBool("run", false);
+            animator.SetBool("attack", true);
             enemigo.atacando = true;
             GetComponent<BoxCollider2D>().enabled = false;
+            target.GetComponent<PlayerAttack>().TakeDamageIzq(1);
+            //Debug.Log("Vuelo <----");
+            
+            
         }
     }
 

@@ -62,6 +62,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         Comportamientos();
+        
 
         if (contador)
         {
@@ -75,10 +76,7 @@ public class Enemy : MonoBehaviour
             x = 0;
         }
 
-        if (Input.GetKeyDown(KeyCode.P)) {
-            attack();
-            Debug.Log("Atacando");
-        }
+        
 
     }
 
@@ -239,12 +237,12 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void attack()
+    public void attack()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, playerLayer);
 
         foreach (Collider2D player in hitPlayer) {
-            player.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<PlayerAttack>().TakeDamage(1);
+            player.GetComponentInChildren<Transform>().gameObject.GetComponentInChildren<PlayerAttack>().TakeDamageDer(1);
             
 
         }

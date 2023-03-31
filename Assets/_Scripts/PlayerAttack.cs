@@ -27,7 +27,6 @@ public class PlayerAttack : MonoBehaviour
 
     void Start()
     {
-
         currentHealth = maxHealth;
         transformar = gameObject.GetComponentInParent<Transform>();
         animator = gameObject.GetComponent<Animator>();
@@ -38,15 +37,7 @@ public class PlayerAttack : MonoBehaviour
     void Update()
     {
         if (!canAttack) return;
-        if (transformar.lossyScale == new Vector3(-1, 1, 1))
-        {
-            damage = -20;
-        }
-
-        if (transformar.lossyScale == new Vector3(1, 1, 1))
-        {
-            damage = 20;
-        }
+        
 
 
         if (contador)
@@ -102,13 +93,26 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamageDer(int damage)
     {
-        gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpe();
+        gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeDer();
         currentHealth -= damage;
         Debug.Log(currentHealth);
 
         if (currentHealth <= 0) {
+            Debug.Log("Me mori xD");
+        }
+
+    }
+
+    public void TakeDamageIzq(int damage)
+    {
+        gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeIzq();
+        currentHealth -= damage;
+        Debug.Log(currentHealth);
+
+        if (currentHealth <= 0)
+        {
             Debug.Log("Me mori xD");
         }
 
@@ -119,7 +123,10 @@ public class PlayerAttack : MonoBehaviour
             Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);     
             foreach (Collider2D enemy in hitEnemies)
             {
-                enemy.GetComponent<Enemy>().TakeDamage(damage);
+                if (enemy.CompareTag("Enemigo")){
+                    enemy.GetComponent<Enemigo2D>().TakeDamage(damage);
+                }
+                
             }        
     }
 
