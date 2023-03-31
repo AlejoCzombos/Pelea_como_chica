@@ -39,6 +39,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6432609860406773168, guid: 42303504a4fc90a43bc5178df9876bf2, type: 3}
+      propertyPath: _jumpHeight
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432609860406773168, guid: 42303504a4fc90a43bc5178df9876bf2, type: 3}
+      propertyPath: _acceleration
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432609860406773168, guid: 42303504a4fc90a43bc5178df9876bf2, type: 3}
+      propertyPath: _deAcceleration
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6432609860406773168, guid: 42303504a4fc90a43bc5178df9876bf2, type: 3}
       propertyPath: _groundLayer.m_Bits
       value: 320
       objectReference: {fileID: 0}
@@ -203,7 +215,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x: 0
   contador: 0
+  transformar: {fileID: 0}
   damage: 20
+  maxHealth: 3
+  currentHealth: 0
   attackPoint: {fileID: 361299670}
   attackRange: 0.38
   enemyLayers:
