@@ -9,6 +9,9 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Animator animator;
+    [SerializeField] private GameObject player;
+    [SerializeField] private List<GameObject> imagenes;
 
     private float oldVolume;
 
@@ -21,6 +24,8 @@ public class HUDManager : MonoBehaviour
     }
     private void Update()
     {
+        heart();
+
         if (Input.GetButtonDown("Pause") && canPause)
         {
             ResumeGame();
@@ -49,4 +54,33 @@ public class HUDManager : MonoBehaviour
     {
         audioMixer.SetFloat("Master", (isMute ? 0f : oldVolume));
     }
+
+    void heart()
+    {
+        if (player.GetComponent<PlayerAttack>().currentHealth == 2)
+        {
+            animator.SetInteger("Hitted", 1);
+            imagenes[2].gameObject.SetActive(false);
+
+        }
+        else if (player.GetComponent<PlayerAttack>().currentHealth == 1)
+        {
+            animator.SetInteger("Hitted", 2);
+            imagenes[1].gameObject.SetActive(false);
+        }
+        else if (player.GetComponent<PlayerAttack>().currentHealth == 0)
+        {
+            animator.SetInteger("Hitted", 3);
+            imagenes[0].gameObject.SetActive(false);
+        }
+        else if (animator.GetInteger("Hitted") == 0)
+        {
+            imagenes[0].gameObject.SetActive(true);
+            imagenes[1].gameObject.SetActive(true);
+            imagenes[2].gameObject.SetActive(true);
+
+        }
+
+    }
+
 }

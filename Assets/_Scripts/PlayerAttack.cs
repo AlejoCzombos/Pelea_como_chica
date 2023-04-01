@@ -104,12 +104,12 @@ public class PlayerAttack : MonoBehaviour
         else {
             gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeIzq();
         }
-        
+        animator.SetTrigger("takeDamage");
         currentHealth -= damage;
         Debug.Log(currentHealth);
         //Bajar la vida en el HUD
 
-        if (currentHealth <= 0) {
+        if (currentHealth <= -1) {
             hudManager.ActiveDeathScreen();
         }
     }
@@ -130,7 +130,6 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (enemy.CompareTag("Enemigo")){
                     enemy.GetComponent<Enemigo2D>().TakeDamage(damage);
-                    dirX = enemy.transform.position.x;
                 }
                 
             }        
