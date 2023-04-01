@@ -107,10 +107,10 @@ TextureImporter:
       name: Juana Azurduy 1.2 sneky_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 317
-        width: 244
-        height: 198
+        x: 0
+        y: 280
+        width: 356
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,10 +128,10 @@ TextureImporter:
       name: Juana Azurduy 1.2 sneky_1
       rect:
         serializedVersion: 2
-        x: 420
-        y: 320
-        width: 245
-        height: 189
+        x: 356
+        y: 280
+        width: 356
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,13 +146,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Juana Azurduy 1.2 sneky_4
+      name: Juana Azurduy 1.2 sneky_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 35
-        width: 227
-        height: 194
+        x: 0
+        y: 0
+        width: 356
+        height: 280
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -160,8 +160,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c521db24ab696d45b5d71fbe8b676cb
-      internalID: -985145957
+      spriteID: 8bea00d7f85d2184c902c7a22c849e9f
+      internalID: -868253945
       vertices: []
       indices: 
       edges: []
@@ -177,10 +177,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Juana Azurduy 1.2 sneky_4: -985145957
       Juana Azurduy 1.2 sneky_2: -868253945
       Juana Azurduy 1.2 sneky_1: 847653631
-      Juana Azurduy 1.2 sneky_3: -1017070062
       Juana Azurduy 1.2 sneky_0: 2080186203
   spritePackingTag: 
   pSDRemoveMatte: 0

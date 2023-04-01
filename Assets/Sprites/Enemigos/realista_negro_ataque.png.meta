@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9fb7395e8a4d82a4aa00ebbfd98c3c40
+guid: 50058732cdd9ca649b9073c008bcd882
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -104,64 +104,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Juana Azurduy 1.2 jump_0
+      name: realista_negro_ataque_0
       rect:
         serializedVersion: 2
-        x: 64
-        y: 320
-        width: 227
-        height: 195
+        x: 0
+        y: 600
+        width: 300
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89b1f3934ad48074a994587c51ab369f
-      internalID: 1851669099
+      spriteID: d516ae11a5b161d4a94a585a3654dc8a
+      internalID: 1359705754
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Juana Azurduy 1.2 jump_1
+      name: realista_negro_ataque_1
       rect:
         serializedVersion: 2
-        x: 430
-        y: 339
-        width: 212
-        height: 203
+        x: 300
+        y: 600
+        width: 300
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f195ed9f8fb2aed42887c0621c1c765c
-      internalID: -2016956344
+      spriteID: 36c3383570e66b94ba4131b114f215dd
+      internalID: 1207394542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Juana Azurduy 1.2 jump_3
+      name: realista_negro_ataque_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 40
-        width: 227
-        height: 189
+        x: 0
+        y: 300
+        width: 300
+        height: 300
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 77730e836a2d9234cbfc3402abdb28bc
-      internalID: -1978514485
+      spriteID: 8398e8dde6c924b489e7001e9a65052f
+      internalID: -2122344761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: realista_negro_ataque_3
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 300
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0dbcd495ae97064bb16ab471541af99
+      internalID: 359773207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: realista_negro_ataque_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 300
+        height: 300
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d930404661b26c44fbda15c3e486e66a
+      internalID: 1112984994
       vertices: []
       indices: 
       edges: []
@@ -177,10 +219,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Juana Azurduy 1.2 jump_1: -2016956344
-      Juana Azurduy 1.2 jump_2: -1696623341
-      Juana Azurduy 1.2 jump_0: 1851669099
-      Juana Azurduy 1.2 jump_3: -1978514485
+      realista_negro_ataque_0: 1359705754
+      realista_negro_ataque_2: -2122344761
+      realista_negro_ataque_1: 1207394542
+      realista_negro_ataque_4: 1112984994
+      realista_negro_ataque_3: 359773207
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

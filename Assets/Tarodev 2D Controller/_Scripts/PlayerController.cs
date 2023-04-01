@@ -13,6 +13,8 @@ namespace ControlPlayer
     /// </summary>
     public class PlayerController : MonoBehaviour, IPlayerController {
         // Public for external hooks
+
+        public Animator animator;
         public Vector3 Velocity { get; private set; }
         public FrameInput Input { get; private set; }
         public bool JumpingThisFrame { get; private set; }
@@ -33,6 +35,11 @@ namespace ControlPlayer
         private bool _active;
         void Awake() => Invoke(nameof(Activate), 0.5f);
         void Activate() =>  _active = true;
+
+        private void Start() {
+
+
+        }
         
         private void Update() {
             if(!_active || Time.timeScale != 1) return;
@@ -160,7 +167,11 @@ namespace ControlPlayer
         [SerializeField] private float _apexBonus = 2;
 
         private void CalculateWalk() {
+
+
+
             if (Input.X != 0) {
+                animator.SetBool("walk", true);
                 // Set horizontal move speed
                 _currentHorizontalSpeed += Input.X * _acceleration * Time.deltaTime;
 
@@ -172,6 +183,7 @@ namespace ControlPlayer
                 _currentHorizontalSpeed += apexBonus * Time.deltaTime;
             }
             else {
+                animator.SetBool("walk", false);
                 // No input. Let's slow the character down
                 _currentHorizontalSpeed = Mathf.MoveTowards(_currentHorizontalSpeed, 0, _deAcceleration * Time.deltaTime);
             }
