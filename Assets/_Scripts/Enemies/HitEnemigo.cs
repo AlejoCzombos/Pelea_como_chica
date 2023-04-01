@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class HitEnemigo : MonoBehaviour
 {
-    
+    public GameObject target;
+
+    public bool puedeAtacar = true;
+
     void OnTriggerEnter2D(Collider2D coll) {
-        if (coll.CompareTag("Player"))
+        if (coll.CompareTag("Player") && puedeAtacar)
         {
-            Debug.Log("daño");
-            
+            target.GetComponent<PlayerAttack>().TakeDamage(1);
+
         }
     }
 

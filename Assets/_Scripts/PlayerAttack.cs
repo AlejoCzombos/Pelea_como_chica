@@ -113,7 +113,14 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-   
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        if (coll.CompareTag("Enemigo"))
+        {
+            dirX = coll.transform.position.x;
+
+        }
+    }
 
     void Attack()
     {
