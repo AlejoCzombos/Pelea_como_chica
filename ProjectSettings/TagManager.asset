@@ -57,3 +57,6 @@ TagManager:
   - name: Player
     uniqueID: 296036517
     locked: 0
+  - name: FrontGround
+    uniqueID: 1948051925
+    locked: 0

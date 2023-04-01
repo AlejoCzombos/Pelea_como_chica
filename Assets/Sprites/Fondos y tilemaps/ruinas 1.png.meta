@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 80
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -116,27 +116,6 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ruinas 1_0
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 543
-        width: 698
-        height: 480
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 82e5e9db217149a459c77351680af1ca
-      internalID: 2022218525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: ruinas 1_1
       rect:
         serializedVersion: 2
@@ -195,27 +174,6 @@ TextureImporter:
       bones: []
       spriteID: 36d2a956a91142c4da10202ce82ff99b
       internalID: -892735798
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: ruinas 1_4
-      rect:
-        serializedVersion: 2
-        x: 12
-        y: 27
-        width: 698
-        height: 466
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e6e5ecc2c8c34544a9b334cb5ac6f40
-      internalID: -243572068
       vertices: []
       indices: 
       edges: []
@@ -283,6 +241,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: ruinas 1_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 543
+        width: 698
+        height: 480
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc4cccb2f3e15d240ba8d89d325611ac
+      internalID: 514865571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ruinas 1_4
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 27
+        width: 698
+        height: 466
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3ac8273c9691c044b45917cbe019bd3
+      internalID: -800329345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -294,11 +294,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      ruinas 1_4: -243572068
+      ruinas 1_4: -800329345
       ruinas 1_5: -1583647935
       ruinas 1_1: -1301553639
       ruinas 1_7: -1551872340
-      ruinas 1_0: 2022218525
+      ruinas 1_0: 514865571
       ruinas 1_2: -1967738695
       ruinas 1_3: -892735798
       ruinas 1_6: -1489592264

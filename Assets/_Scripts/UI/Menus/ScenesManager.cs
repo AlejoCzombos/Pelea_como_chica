@@ -58,6 +58,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void ChangeSceneToMainMenu()
     {
+        Time.timeScale= 1;
         PlayButtonPressed();
         StartCoroutine(levelLoader.LoadScene(1));
     }
