@@ -39,7 +39,7 @@ public class Tutorial : MonoBehaviour
     {
         if (seUso)
         {
-            if (Input.GetButtonDown("Attack"))
+            if (Input.GetButtonDown("Attack") && !dialogManager.isTyping)
             {
                 playerController.Active = true;
                 hudManager.canPause = true;

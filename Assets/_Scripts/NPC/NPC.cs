@@ -49,9 +49,6 @@ public class NPC : MonoBehaviour
                 }
             }
         }
-        else
-        {
-        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

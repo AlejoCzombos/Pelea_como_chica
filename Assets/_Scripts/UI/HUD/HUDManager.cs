@@ -7,6 +7,7 @@ using UnityEngine.Audio;
 public class HUDManager : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject deathScreen;
     [SerializeField] private AudioMixer audioMixer;
 
     private float oldVolume;
@@ -31,6 +32,17 @@ public class HUDManager : MonoBehaviour
         pauseMenuIsActive = !pauseMenuIsActive;
         pauseMenu.SetActive(pauseMenuIsActive);
         Time.timeScale = !pauseMenuIsActive ? 1.0f : 0.0f;
+    }
+    public void ActiveDeathScreen()
+    {
+        ResumeGame();
+        deathScreen.SetActive(true);
+    }
+    public void ReplayGame()
+    {
+        deathScreen.SetActive(false);
+        ResumeGame();
+        //Cargar Checkpoint
     }
 
     public void MuteVolume(bool isMute)

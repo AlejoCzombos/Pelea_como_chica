@@ -5,11 +5,16 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System;
 using UnityEditor;
+using UnityEngine.EventSystems;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class ScenesManager : MonoBehaviour
 {
     [SerializeField] private bool areTheCredits;
     [SerializeField] private LevelLoader levelLoader;
+    [SerializeField] private Animator musicAnimator;
+    [SerializeField] private Animator MenuMusicAnimator;
 
     private AudioSource buttonPressed;
 
@@ -38,18 +43,22 @@ public class ScenesManager : MonoBehaviour
     }
     public void ChangeSceneToGame()
     {
+        var objeto = GameObject.Find("Main Menu Music");
+        MenuMusicAnimator = objeto.GetComponent<Animator>();
         Time.timeScale = 1;
-        StartCoroutine(levelLoader.LoadScene(0));
+        PlayButtonPressed();
+        MenuMusicAnimator.SetTrigger("FadeOut");
+        StartCoroutine(levelLoader.LoadScene(0, 3));
     }
     public void ChangeSceneToCredits()
     {
         PlayButtonPressed();
-        StartCoroutine(levelLoader.LoadScene(2));
+        StartCoroutine(levelLoader.LoadSceneMenu(2));
     } 
     public void ChangeSceneToOptions()
     {
         PlayButtonPressed();
-        StartCoroutine(levelLoader.LoadScene(4));
+        StartCoroutine(levelLoader.LoadSceneMenu(4));
     }
     public void ExitGame()
     {
@@ -58,14 +67,20 @@ public class ScenesManager : MonoBehaviour
     }
     public void ChangeSceneToMainMenu()
     {
+        PlayButtonPressed();
+        StartCoroutine(levelLoader.LoadSceneMenu(1));
+    }
+    public void ChangeSceneToMainMenuInGame()
+    {
         Time.timeScale= 1;
         PlayButtonPressed();
-        StartCoroutine(levelLoader.LoadScene(1));
+        musicAnimator.SetTrigger("FadeOut");
+        StartCoroutine(levelLoader.LoadScene(1,3));
     }
     public void ChangeSceneToCharacterController()
     {
         PlayButtonPressed();
-        StartCoroutine(levelLoader.LoadScene(3));
+        StartCoroutine(levelLoader.LoadSceneMenu(3));
     }
     public void PlayButtonPressed()
     {

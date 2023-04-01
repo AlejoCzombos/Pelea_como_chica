@@ -18,6 +18,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private Animator animator;
+    [SerializeField] private HUDManager hudManager;
 
     private bool canAttack = true;
     public bool CanAttack
@@ -106,11 +107,11 @@ public class PlayerAttack : MonoBehaviour
         
         currentHealth -= damage;
         Debug.Log(currentHealth);
+        //Bajar la vida en el HUD
 
         if (currentHealth <= 0) {
-            Debug.Log("Me mori xD");
+            hudManager.ActiveDeathScreen();
         }
-
     }
 
    
