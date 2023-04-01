@@ -13,6 +13,8 @@ public class Enemigo2D : MonoBehaviour
     public GameObject target;
     public GameObject Visual;
     public bool atacando;
+    public bool puedeAtacar = true;
+    public float contadorAtaque = 0;
 
     public float rangoVision;
     public float rangoAtaque;
@@ -38,7 +40,23 @@ public class Enemigo2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Comportamientos();
+        if (puedeAtacar) {
+            Comportamientos();
+        }
+
+        if (!puedeAtacar) {
+            contadorAtaque += 1 * Time.deltaTime;
+        }
+
+
+        if (contadorAtaque > 1) {
+            gameObject.GetComponentInChildren<RangoEnemigo>().puedeAtacar = true;
+            gameObject.GetComponentInChildren<HitEnemigo>().puedeAtacar = true;
+            puedeAtacar = true;
+            contadorAtaque = 0;
+        }
+        
+        
         
     }
 
@@ -132,6 +150,10 @@ public class Enemigo2D : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        
+        puedeAtacar = false;
+        gameObject.GetComponentInChildren<RangoEnemigo>().puedeAtacar = false;
+        gameObject.GetComponentInChildren<HitEnemigo>().puedeAtacar = false;
         if (Visual.transform.lossyScale.x == -1)
         {
             FinalAni();
