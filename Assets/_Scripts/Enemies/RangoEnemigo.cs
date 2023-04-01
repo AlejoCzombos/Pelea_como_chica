@@ -16,8 +16,8 @@ public class RangoEnemigo : MonoBehaviour
             animator.SetBool("attack", true);
             enemigo.atacando = true;
             GetComponent<BoxCollider2D>().enabled = false;
-            target.GetComponent<PlayerAttack>().TakeDamageIzq(1);
-            //Debug.Log("Vuelo <----");
+            target.GetComponent<PlayerAttack>().TakeDamage(1);
+           
             
             
         }
@@ -32,6 +32,6 @@ public class RangoEnemigo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
