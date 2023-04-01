@@ -1528,6 +1528,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2121072360}
+    - target: {fileID: 8948482729318679496, guid: 2130ea2766982f5438925f949b2b28e9, type: 3}
+      propertyPath: cronometro
+      value: 2.04
+      objectReference: {fileID: 0}
     - target: {fileID: 8948482729318679501, guid: 2130ea2766982f5438925f949b2b28e9, type: 3}
       propertyPath: m_Size.y
       value: 2.827069

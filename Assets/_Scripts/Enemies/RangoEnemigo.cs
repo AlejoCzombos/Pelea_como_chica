@@ -9,29 +9,29 @@ public class RangoEnemigo : MonoBehaviour
     public Enemigo2D enemigo;
     public GameObject target;
 
+    private float tiempoEntreAtaques = 3.0f;
+    private float tiempoDesdeUltimoAtaque = 0.0f;
+    private bool puedeAtacar = true;
+
     void OnTriggerEnter2D(Collider2D coll) {
-        if (coll.CompareTag("Player")) {
+        if (coll.CompareTag("Player") && puedeAtacar) {
+            tiempoDesdeUltimoAtaque = 0.0f;
             animator.SetBool("walk", false);
             animator.SetBool("run", false);
             animator.SetBool("attack", true);
             enemigo.atacando = true;
             GetComponent<BoxCollider2D>().enabled = false;
             target.GetComponent<PlayerAttack>().TakeDamage(1);
-           
-            
-            
+            puedeAtacar = false;
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
+        tiempoDesdeUltimoAtaque+= Time.deltaTime; 
+        if (!puedeAtacar && tiempoDesdeUltimoAtaque >= tiempoEntreAtaques)
+        {
+            puedeAtacar=true;
+        }
     }
 }

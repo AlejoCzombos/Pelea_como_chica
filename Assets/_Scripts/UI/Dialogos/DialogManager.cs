@@ -58,7 +58,7 @@ public class DialogManager : MonoBehaviour
         foreach (char caracter in sentence)
         {
             dialogText.text += caracter;
-            voice.Play();
+            if(voice != null) voice.Play();
             yield return new WaitForSeconds( 1 / wordsPerSeconds);
         }
         yield return new WaitForSeconds(1.0f);

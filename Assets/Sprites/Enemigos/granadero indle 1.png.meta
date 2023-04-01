@@ -119,9 +119,9 @@ TextureImporter:
       name: granadero indle 1_0
       rect:
         serializedVersion: 2
-        x: 28
+        x: 0
         y: 300
-        width: 197
+        width: 300
         height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,10 +140,10 @@ TextureImporter:
       name: granadero indle 1_1
       rect:
         serializedVersion: 2
-        x: 328
+        x: 300
         y: 300
-        width: 197
-        height: 291
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -161,10 +161,10 @@ TextureImporter:
       name: granadero indle 1_2
       rect:
         serializedVersion: 2
-        x: 28
+        x: 0
         y: 0
-        width: 197
-        height: 291
+        width: 300
+        height: 300
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
