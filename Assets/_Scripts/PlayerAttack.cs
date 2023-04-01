@@ -12,6 +12,7 @@ public class PlayerAttack : MonoBehaviour
 
     [SerializeField] private int maxHealth = 3;
     public int currentHealth;
+    public float dirX = 0;
 
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
@@ -93,9 +94,16 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    public void TakeDamageDer(int damage)
+    public void TakeDamage(int damage)
     {
-        gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeDer();
+        if (dirX < gameObject.transform.parent.parent.GetComponent<Transform>().position.x)
+        {
+            gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeDer();
+        }
+        else {
+            gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeIzq();
+        }
+        
         currentHealth -= damage;
         Debug.Log(currentHealth);
 
@@ -105,18 +113,7 @@ public class PlayerAttack : MonoBehaviour
 
     }
 
-    public void TakeDamageIzq(int damage)
-    {
-        gameObject.transform.parent.parent.GetComponent<ControlPlayer.PlayerController>().recibirGolpeIzq();
-        currentHealth -= damage;
-        Debug.Log(currentHealth);
-
-        if (currentHealth <= 0)
-        {
-            Debug.Log("Me mori xD");
-        }
-
-    }
+   
 
     void Attack()
     {
@@ -125,6 +122,7 @@ public class PlayerAttack : MonoBehaviour
             {
                 if (enemy.CompareTag("Enemigo")){
                     enemy.GetComponent<Enemigo2D>().TakeDamage(damage);
+                    dirX = enemy.transform.position.x;
                 }
                 
             }        

@@ -308,7 +308,7 @@ namespace ControlPlayer
 
         public void recibirGolpeDer() {
             _currentVerticalSpeed = 15;
-            _currentHorizontalSpeed = +10;
+            _currentHorizontalSpeed = +20;
         }
 
         public void recibirGolpeIzq()

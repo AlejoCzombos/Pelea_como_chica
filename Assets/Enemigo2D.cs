@@ -149,6 +149,7 @@ public class Enemigo2D : MonoBehaviour
 
         if (currentHealth <= 0)
         {
+
             Debug.Log("Me mori xD");
         }
 

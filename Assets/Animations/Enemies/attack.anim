@@ -21,11 +21,11 @@ AnimationClip:
   - curve:
     - time: 0
       value: {fileID: -441020812, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
-    - time: 0.07692308
-      value: {fileID: -383283605, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
     - time: 0.15384616
-      value: {fileID: 2087095432, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
+      value: {fileID: -383283605, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
     - time: 0.23076923
+      value: {fileID: 2087095432, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
+    - time: 0.3846154
       value: {fileID: -1965210473, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
     - time: 0.61538464
       value: {fileID: -1965210473, guid: 853ba82545785ac47aeb31a56f01e37e, type: 3}
@@ -78,14 +78,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.15384616
+  - time: 0.23076923
     functionName: ColliderWeaponTrue
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.23076923
+  - time: 0.3846154
     functionName: ColliderWeaponFalse
     data: 
     objectReferenceParameter: {fileID: 0}
