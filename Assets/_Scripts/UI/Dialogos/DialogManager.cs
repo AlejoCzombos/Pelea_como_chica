@@ -11,6 +11,7 @@ public class DialogManager : MonoBehaviour
     [SerializeField] private Text dialogText;
     [SerializeField] private Animator animator;
     [SerializeField] private float wordsPerSeconds;
+    [SerializeField] private List<GameObject> enemigos;
 
     public bool isFinish = false;
     public bool isTyping = false;
@@ -27,6 +28,9 @@ public class DialogManager : MonoBehaviour
         voice = voiceAudio;
         animator.SetBool("isOpen", true);
         nameText.text = dialog.Name;
+        foreach (GameObject enemigo in enemigos) {
+            enemigo.GetComponent<Enemigo2D>().tiempoParado = true;
+        }
         sentences.Clear();
 
         foreach (string sentence in dialog.Sentences)
@@ -48,6 +52,10 @@ public class DialogManager : MonoBehaviour
     }
     public void EndDialog()
     {
+        foreach (GameObject enemigo in enemigos)
+        {
+            enemigo.GetComponent<Enemigo2D>().tiempoParado = false;
+        }
         animator.SetBool("isOpen", false);
     }
 

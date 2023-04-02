@@ -10,6 +10,7 @@ public class NPC : MonoBehaviour
     [SerializeField] private PlayerController playerController;
     [SerializeField] private PlayerAttack playerAttack;
     [SerializeField] private HUDManager hudManager;
+    [SerializeField] private Enemigo2D enemigo;
 
     private DialogTrigger dialogTrigger;
     private AudioSource voice;
@@ -30,6 +31,7 @@ public class NPC : MonoBehaviour
             {
                 if (!inDialogue)
                 {
+                    
                     inDialogue = true;
                     playerController.Active = false;
                     hudManager.canPause = false;
@@ -45,6 +47,7 @@ public class NPC : MonoBehaviour
                         hudManager.canPause = true;
                         playerController.Active = true;
                         inDialogue = false;
+                        
                     }
                 }
             }

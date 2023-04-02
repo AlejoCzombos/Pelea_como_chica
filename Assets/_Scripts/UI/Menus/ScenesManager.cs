@@ -91,4 +91,8 @@ public class ScenesManager : MonoBehaviour
     {
         buttonPressed.Play();
     }
+    public void Restart() {
+        StartCoroutine(levelLoader.LoadScene(1, 1.3f));
+    }
+
 }

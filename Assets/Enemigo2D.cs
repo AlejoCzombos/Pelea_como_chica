@@ -15,6 +15,7 @@ public class Enemigo2D : MonoBehaviour
     public bool atacando;
     public bool puedeAtacar = true;
     public float contadorAtaque = 0;
+    public bool tiempoParado = false;
 
     public float rangoVision;
     public float rangoAtaque;
@@ -40,11 +41,11 @@ public class Enemigo2D : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (puedeAtacar) {
+        if (puedeAtacar && !tiempoParado) {
             Comportamientos();
         }
 
-        if (!puedeAtacar) {
+        if (!puedeAtacar && !tiempoParado) {
             contadorAtaque += 1 * Time.deltaTime;
         }
 
