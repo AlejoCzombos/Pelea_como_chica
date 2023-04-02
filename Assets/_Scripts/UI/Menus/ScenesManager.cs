@@ -48,7 +48,7 @@ public class ScenesManager : MonoBehaviour
         Time.timeScale = 1;
         PlayButtonPressed();
         MenuMusicAnimator.SetTrigger("FadeOut");
-        StartCoroutine(levelLoader.LoadScene(0, 1.3f));
+        StartCoroutine(levelLoader.LoadScene(1, 1.3f));
     }
     public void ChangeSceneToCredits()
     {
@@ -68,14 +68,14 @@ public class ScenesManager : MonoBehaviour
     public void ChangeSceneToMainMenu()
     {
         PlayButtonPressed();
-        StartCoroutine(levelLoader.LoadSceneMenu(1));
+        StartCoroutine(levelLoader.LoadSceneMenu(0));
     }
     public void ChangeSceneToMainMenuInGame()
     {
         Time.timeScale = 1;
         PlayButtonPressed();
         musicAnimator.SetTrigger("FadeOut");
-        StartCoroutine(levelLoader.LoadScene(1,3));
+        StartCoroutine(levelLoader.LoadScene(0,3));
     }
     public void ChangeSceneToCharacterController()
     {
