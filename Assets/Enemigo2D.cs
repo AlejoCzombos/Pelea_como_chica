@@ -168,6 +168,9 @@ public class Enemigo2D : MonoBehaviour
         Debug.Log(currentHealth);
         if (currentHealth <= 0)
         {
+            puedeAtacar = false;
+            GetComponent<BoxCollider2D>().enabled = false;
+            
         }
 
     }

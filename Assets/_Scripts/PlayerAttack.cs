@@ -54,9 +54,9 @@ public class PlayerAttack : MonoBehaviour
         }
 
 
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetButtonDown("Attack") && canAttack)
         {
-            
+            canAttack = false;
             contador = true;
             animator.SetTrigger("Attack");
             animator.SetBool("noAttack", false);
@@ -116,6 +116,9 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 
+    void volverAtacar() {
+        canAttack = true;
+    }
     
 }
 
