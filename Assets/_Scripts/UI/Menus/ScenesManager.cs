@@ -72,7 +72,7 @@ public class ScenesManager : MonoBehaviour
     }
     public void ChangeSceneToMainMenuInGame()
     {
-        Time.timeScale= 1;
+        Time.timeScale = 1;
         PlayButtonPressed();
         musicAnimator.SetTrigger("FadeOut");
         StartCoroutine(levelLoader.LoadScene(1,3));
@@ -81,6 +81,11 @@ public class ScenesManager : MonoBehaviour
     {
         PlayButtonPressed();
         StartCoroutine(levelLoader.LoadSceneMenu(3));
+    }
+    public void ChangeSceneToFinal()
+    {
+        PlayButtonPressed();
+        StartCoroutine(levelLoader.LoadSceneMenu(5));
     }
     public void PlayButtonPressed()
     {
