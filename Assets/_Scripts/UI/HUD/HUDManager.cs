@@ -10,7 +10,7 @@ public class HUDManager : MonoBehaviour
     [SerializeField] private GameObject deathScreen;
     [SerializeField] private AudioMixer audioMixer;
     [SerializeField] private Animator animator;
-    [SerializeField] private GameObject player;
+    [SerializeField] private PlayerAttack player;
     [SerializeField] private List<GameObject> imagenes;
 
     private float oldVolume;
@@ -57,18 +57,18 @@ public class HUDManager : MonoBehaviour
 
     void heart()
     {
-        if (player.GetComponent<PlayerAttack>().currentHealth == 2)
+        if (player.currentHealth == 2)
         {
             animator.SetInteger("Hitted", 1);
             imagenes[2].gameObject.SetActive(false);
 
         }
-        else if (player.GetComponent<PlayerAttack>().currentHealth == 1)
+        else if (player.currentHealth == 1)
         {
             animator.SetInteger("Hitted", 2);
             imagenes[1].gameObject.SetActive(false);
         }
-        else if (player.GetComponent<PlayerAttack>().currentHealth == 0)
+        else if (player.currentHealth == 0)
         {
             animator.SetInteger("Hitted", 3);
             imagenes[0].gameObject.SetActive(false);

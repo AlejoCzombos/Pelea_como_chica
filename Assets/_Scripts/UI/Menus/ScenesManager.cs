@@ -48,7 +48,7 @@ public class ScenesManager : MonoBehaviour
         Time.timeScale = 1;
         PlayButtonPressed();
         MenuMusicAnimator.SetTrigger("FadeOut");
-        StartCoroutine(levelLoader.LoadScene(0, 3));
+        StartCoroutine(levelLoader.LoadScene(0, 1.3f));
     }
     public void ChangeSceneToCredits()
     {

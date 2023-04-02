@@ -11,7 +11,7 @@ public class OptionsManager : MonoBehaviour
     [SerializeField] private Slider EnviromentSlider;
     [SerializeField] private Toggle fullScreenToggle;
     [SerializeField] private AudioMixer audioMixer;
-
+    [SerializeField] private AudioSource audioClip;
 
     private void Awake()
     {
@@ -21,6 +21,8 @@ public class OptionsManager : MonoBehaviour
         audioMixer.GetFloat("Music", out music);
         audioMixer.GetFloat("SFX", out sfx);
         audioMixer.GetFloat("Enviroment", out envir);
+
+        fullScreenToggle.isOn = (Screen.fullScreen == true ? true : false);
 
         MusicSlider.value = music;
         SFXSlider.value = sfx;
@@ -33,6 +35,7 @@ public class OptionsManager : MonoBehaviour
 
     public void SetFullscreen(bool isFullscreen)
     {
+        audioClip.Play();
         Screen.fullScreen = isFullscreen;
     }
     public void AjustMusicVolume()
@@ -42,11 +45,9 @@ public class OptionsManager : MonoBehaviour
     public void AjustSFXVolume()
     {
         audioMixer.SetFloat("SFX", SFXSlider.value);
-        Debug.Log("Moviendo SFX");
     }
     public void AjustEnviromentVolume()
     {
-        Debug.Log("Moviendo ENCIROMENT");
         audioMixer.SetFloat("Enviroment", EnviromentSlider.value);
     }
 }

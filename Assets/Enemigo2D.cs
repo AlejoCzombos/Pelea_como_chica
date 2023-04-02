@@ -158,21 +158,16 @@ public class Enemigo2D : MonoBehaviour
         {
             FinalAni();
             rb.AddForce(new Vector3(-horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
-            Debug.Log("volando <----");
         }
         else if (Visual.transform.lossyScale.x == 1)
         {
             FinalAni();
             rb.AddForce(new Vector3(+horizontalPush * Time.deltaTime, verticalPush * Time.deltaTime, 0));
-            Debug.Log("volando ---->");
         }
         currentHealth -= damage;
         Debug.Log(currentHealth);
-
         if (currentHealth <= 0)
         {
-
-            Debug.Log("Me mori xD");
         }
 
     }
