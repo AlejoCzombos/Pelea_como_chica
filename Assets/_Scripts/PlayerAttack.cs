@@ -14,6 +14,10 @@ public class PlayerAttack : MonoBehaviour
     public int currentHealth;
     public float dirX = 0;
 
+    [SerializeField] private AudioSource ataque;
+    [SerializeField] private AudioSource herido;
+    [SerializeField] private AudioSource muerte;
+
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float attackRange = 0.5f;
     [SerializeField] private LayerMask enemyLayers;
@@ -56,6 +60,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (Input.GetButtonDown("Attack") && canAttack)
         {
+            ataque.Play();
             canAttack = false;
             contador = true;
             animator.SetTrigger("Attack");
@@ -83,6 +88,11 @@ public class PlayerAttack : MonoBehaviour
 
         if (currentHealth <= -1) {
             hudManager.ActiveDeathScreen();
+            herido.Play();
+        }
+        else
+        {
+            muerte.Play();
         }
     }
 

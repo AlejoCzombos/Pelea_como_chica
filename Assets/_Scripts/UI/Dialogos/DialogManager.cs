@@ -61,6 +61,7 @@ public class DialogManager : MonoBehaviour
 
     public IEnumerator TypeSentence(string sentence)
     {
+        float oldWordsPerSeconds = wordsPerSeconds;
         isTyping = true;
         dialogText.text = "";
         foreach (char caracter in sentence)
@@ -68,8 +69,13 @@ public class DialogManager : MonoBehaviour
             dialogText.text += caracter;
             if(voice != null) voice.Play();
             yield return new WaitForSeconds( 1 / wordsPerSeconds);
+            if(Input.GetButtonDown("Attack") || Input.GetKeyDown(KeyCode.Space))
+            {
+                wordsPerSeconds = 200;
+            }
         }
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.3f);
+        wordsPerSeconds = oldWordsPerSeconds;
         isTyping = false;
     }
 }

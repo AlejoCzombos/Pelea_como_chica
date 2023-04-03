@@ -92,7 +92,8 @@ public class ScenesManager : MonoBehaviour
         buttonPressed.Play();
     }
     public void Restart() {
-        StartCoroutine(levelLoader.LoadScene(1, 1.3f));
+        StartCoroutine(levelLoader.LoadScene(1, 0));
+        Time.timeScale = 1;
     }
 
 }
